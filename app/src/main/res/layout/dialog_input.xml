@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <EditText
+        android:id="@+id/edit_text_dustbin_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Dustbin ID"
+        android:inputType="text" />
+    <Spinner
+        android:id="@+id/spinner_collector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:entries="@array/collector_array" />
+
+</LinearLayout>

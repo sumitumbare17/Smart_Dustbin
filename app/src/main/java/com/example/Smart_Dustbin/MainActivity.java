@@ -1,8 +1,9 @@
-package com.example.demo_app;
+package com.example.Smart_Dustbin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
 
 public class MainActivity extends AppCompatActivity {
 

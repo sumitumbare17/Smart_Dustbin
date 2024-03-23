@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Demo_app"
+rootProject.name = "Smart_Dustbin"
 include ':app'

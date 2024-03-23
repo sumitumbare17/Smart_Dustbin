@@ -1,4 +1,4 @@
-package com.example.demo_app;
+package com.example.Smart_Dustbin;
 
 import android.content.Context;
 

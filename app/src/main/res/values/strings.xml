@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Demo_app</string>
     <string name="title_activity_maps">MapsActivity</string>
+        <string-array name="collector_array">
+            <item>Collector 1</item>
+            <item>Collector 2</item>
+            <item>Collector 3</item>
+        </string-array>
+
 </resources>

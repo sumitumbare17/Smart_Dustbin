@@ -1,4 +1,4 @@
-package com.example.demo_app;
+package com.example.Smart_Dustbin;
 
 import org.junit.Test;
 
