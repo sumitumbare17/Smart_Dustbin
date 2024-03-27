@@ -170,7 +170,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        String collectorName = snapshot.child("name").getValue(String.class);
+                        String collectorName = snapshot.child("phoneNumber").getValue(String.class);
                         collectorNames.add(collectorName);
                     }
                 } else {

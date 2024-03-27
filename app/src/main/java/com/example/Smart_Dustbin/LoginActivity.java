@@ -1,19 +1,23 @@
 package com.example.Smart_Dustbin;
 
-import static android.content.ContentValues.TAG;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.Smart_Dustbin.collector.CollectorDashboard;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -109,26 +113,42 @@ public class LoginActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String UEmail = email.getText().toString();
+                String UPass = pass.getText().toString();
 
+                if (UEmail.equals("admin") && UPass.equals("12345")) {
+                    // Admin login
+                    startActivity(new Intent(LoginActivity.this, Dashboard.class));
+                } else {
+                    // Collector login
+                    DatabaseReference collectorsRef = FirebaseDatabase.getInstance().getReference("collectors");
+                    collectorsRef.orderByChild("phoneNumber").equalTo(UEmail).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists()) {
+                                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                    String password = snapshot.child("password").getValue(String.class);
+                                    if (password != null && password.equals(UPass)) {
+                                        // Collector login successful
+                                        startActivity(new Intent(LoginActivity.this, CollectorDashboard.class));
+                                        return;
+                                    }
+                                }
+                                // If the password does not match
+                                Toast.makeText(LoginActivity.this, "Incorrect password.", Toast.LENGTH_SHORT).show();
+                            } else {
+                                // If the collector does not exist
+                                Toast.makeText(LoginActivity.this, "Collector does not exist.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
 
-        String UEmail = email.getText().toString();
-        String UPass = pass.getText().toString();
-        Log.d(TAG, "onClick: " + UEmail);
-        if (UEmail.length() == 0 || UPass.length() == 0) {
-            Toast.makeText(LoginActivity.this, "Please fill all the details", Toast.LENGTH_SHORT).show();
-        } else {
-
-            if(UEmail.equals("admin") && UPass.equals("12345")){
-
-
-                startActivity(new Intent(LoginActivity.this, Dashboard.class));
-            }
-            else{
-                Toast.makeText(LoginActivity.this, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show();
-            }
-        }
-
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                            // Handle database error
+                            Toast.makeText(LoginActivity.this, "Database error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
             }
         });
 

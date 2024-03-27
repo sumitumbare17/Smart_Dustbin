@@ -55,6 +55,7 @@
             android:exported="false">
         </activity>
         <activity android:name=".collector.AddCollectorActivity"/>
+        <activity android:name=".collector.CollectorDashboard"/>
     </application>
 
 </manifest>
