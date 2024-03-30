@@ -1,11 +1,11 @@
 package com.example.Smart_Dustbin;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.example.Smart_Dustbin.collector.AddCollectorActivity;
 
@@ -33,6 +33,12 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Dashboard.this, AddCollectorActivity.class));
+            }
+        });
+        stat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Dashboard.this,DustbinWasteDataActivity.class));
             }
         });
 

@@ -58,13 +58,14 @@ public class CollectorDashboard extends AppCompatActivity {
         findViewById(R.id.cardViewDustbinStatus).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(CollectorDashboard.this, LocateDustbins.class));
             }
         });
 
         findViewById(R.id.cardViewStatistics).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(CollectorDashboard.this, WasteVisualizationActivity.class));
 
             }
         });

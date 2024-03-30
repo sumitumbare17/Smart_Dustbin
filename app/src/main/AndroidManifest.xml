@@ -39,6 +39,9 @@
             android:exported="false"
             android:label="@string/title_activity_maps" />
         <activity
+            android:name=".collector.LocateDustbins"
+            android:exported="false" />
+        <activity
             android:name=".Dashboard"
             android:exported="false" />
         <activity
@@ -56,6 +59,10 @@
         </activity>
         <activity android:name=".collector.AddCollectorActivity"/>
         <activity android:name=".collector.CollectorDashboard"/>
+        <activity android:name=".collector.DustbinStatusActivity" />
+        <activity android:name=".collector.WasteVisualizationActivity"/>
+        <activity android:name=".DustbinWasteDataActivity"/>
+
     </application>
 
 </manifest>
