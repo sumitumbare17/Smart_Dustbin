@@ -86,13 +86,45 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 app:cardCornerRadius="20dp"
+
                 app:cardElevation="20dp">
 
                 <!-- Layout for View Dustbin Status Menu Item -->
 
+                <com.google.android.material.circularreveal.CircularRevealRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/bin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/markAttendImg"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="sans-serif-condensed"
+
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:text="View Dustbins"
+                        android:textColor="#1F7120"
+                        android:textSize="20sp" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/markAttendImg"
+                        android:layout_width="81dp"
+                        android:layout_height="91dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="15dp"
+                        android:src="@drawable/dustbin" />
+
+                </com.google.android.material.circularreveal.CircularRevealRelativeLayout>
+
+
             </androidx.cardview.widget.CardView>
 
             <!-- Second Menu Item: View Statistics -->
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewStatistics"
                 android:layout_width="0dp"
@@ -101,6 +133,38 @@
                 android:layout_weight="1"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="20dp">
+
+                <com.google.android.material.circularreveal.CircularRevealRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/markAttendName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/stat"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="9dp"
+                        android:layout_marginEnd="53dp"
+                        android:layout_marginBottom="18dp"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="center"
+                        android:text="Analyse"
+                        android:textColor="#1F7120"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/stat"
+                        android:layout_width="81dp"
+                        android:layout_height="91dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="15dp"
+                        android:src="@drawable/graph" />
+
+                </com.google.android.material.circularreveal.CircularRevealRelativeLayout>
 
 
             </androidx.cardview.widget.CardView>

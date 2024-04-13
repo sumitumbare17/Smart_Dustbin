@@ -130,7 +130,9 @@ public class LoginActivity extends AppCompatActivity {
                                     String password = snapshot.child("password").getValue(String.class);
                                     if (password != null && password.equals(UPass)) {
                                         // Collector login successful
-                                        startActivity(new Intent(LoginActivity.this, CollectorDashboard.class));
+                                        Intent intent = new Intent(LoginActivity.this, CollectorDashboard.class);
+                                        intent.putExtra("mobileNo", UEmail); // Replace "key" with your key and "value" with the actual data
+                                        startActivity(intent);
                                         return;
                                     }
                                 }

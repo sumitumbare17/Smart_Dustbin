@@ -62,6 +62,7 @@
         <activity android:name=".collector.DustbinStatusActivity" />
         <activity android:name=".collector.WasteVisualizationActivity"/>
         <activity android:name=".DustbinWasteDataActivity"/>
+        <activity android:name=".collector.DustbinListActivity"/>
 
     </application>
 

@@ -59,7 +59,7 @@
                     android:layout_below="@id/tv_wel"
                     android:layout_marginLeft="110dp"
                     android:layout_marginTop="5dp"
-                    android:text="Name"
+                    android:text=""
                     android:textColor="@color/white"
                     android:textSize="26dp"
                     android:textStyle="bold" />
@@ -102,7 +102,7 @@
                 app:cardElevation="20dp">
 
                 <com.google.android.material.circularreveal.CircularRevealRelativeLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="175dp"
                     android:layout_height="match_parent">
 
                     <com.google.android.material.textview.MaterialTextView
@@ -114,11 +114,11 @@
                         android:layout_marginTop="10dp"
                         android:fontFamily="sans-serif-condensed"
 
-                        android:textStyle="bold"
                         android:gravity="center"
                         android:text="Track"
                         android:textColor="#1F7120"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/markAttendImg"
@@ -143,7 +143,7 @@
 
                 <com.google.android.material.circularreveal.CircularRevealRelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="147dp">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/attendSummaryName"
@@ -155,9 +155,9 @@
                         android:fontFamily="sans-serif-condensed"
                         android:gravity="center"
                         android:text="Collector"
-                        android:textStyle="bold"
                         android:textColor="#1F7120"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/attendSummaryImg"
@@ -219,6 +219,7 @@
                         android:layout_centerHorizontal="true"/>
 
                 </com.google.android.material.circularreveal.CircularRevealRelativeLayout>
+
             </androidx.cardview.widget.CardView>
 
 

@@ -7,28 +7,10 @@
 
     <fragment
         android:id="@+id/map2"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+        class="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/btn_container"
-        android:layout_alignParentTop="true"
-        tools:context=".MapsActivity" />
+        android:layout_alignParentTop="true" />
 
-    <LinearLayout
-        android:id="@+id/btn_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:gravity="center">
-
-        <Button
-            android:id="@+id/getPath"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="View Path" />
-
-
-    </LinearLayout>
 
 </RelativeLayout>

@@ -1,6 +1,6 @@
 package com.example.Smart_Dustbin.collector;
 
-public class Dustbin {
+public class Dustbin  {
     private String id;
     private double latitude;
     private double longitude;

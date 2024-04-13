@@ -12,12 +12,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
-
 import com.example.Smart_Dustbin.databinding.ActivityMapsBinding;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -63,11 +61,40 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         Button setCurrentLocationButton = findViewById(R.id.btn_set_current_location);
+        Button loadDustbin = findViewById(R.id.btn_load);
+        loadDustbin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadDustbinData();
+            }
+        });
 
         setCurrentLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addCurrentLocationMarker();
+            }
+        });
+    }
+
+    private void loadDustbinData() {
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("dustbins");
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mMap.clear(); // Clear previous markers
+                for (DataSnapshot dustbinSnapshot : dataSnapshot.getChildren()) {
+                    double latitude = dustbinSnapshot.child("latitude").getValue(Double.class);
+                    double longitude = dustbinSnapshot.child("longitude").getValue(Double.class);
+                    String dustbinId = dustbinSnapshot.getKey();
+                    LatLng latLng = new LatLng(latitude, longitude);
+                    mMap.addMarker(new MarkerOptions().position(latLng).title("Dustbin ID: " + dustbinId));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle database error
             }
         });
     }
@@ -219,12 +246,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             }
                         });
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(MapsActivity.this, "Failed to retrieve collector's dustbin IDs", Toast.LENGTH_LONG).show();
             }
         });
     }
-
 }

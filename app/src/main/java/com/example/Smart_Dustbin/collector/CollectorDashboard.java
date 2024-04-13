@@ -27,8 +27,9 @@ public class CollectorDashboard extends AppCompatActivity {
         setContentView(R.layout.activity_collector_dashboard);
 
         textViewCollectorName = findViewById(R.id.tv_wel);
+        Intent intent = getIntent();
+        String collectorPhoneNumber = intent.getStringExtra("mobileNo"); // Replace "key" with the key you used in the sender activity
 
-        String collectorPhoneNumber = "9373197797";
         collectorsRef = FirebaseDatabase.getInstance().getReference("collectors").child(collectorPhoneNumber);
         collectorsRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -58,14 +59,18 @@ public class CollectorDashboard extends AppCompatActivity {
         findViewById(R.id.cardViewDustbinStatus).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(CollectorDashboard.this, LocateDustbins.class));
+                Intent intent = new Intent(CollectorDashboard.this, LocateDustbins.class);
+                intent.putExtra("mobileNo", collectorPhoneNumber); // Replace "key" with your key and "value" with the actual data
+                startActivity(intent);
             }
         });
 
         findViewById(R.id.cardViewStatistics).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(CollectorDashboard.this, WasteVisualizationActivity.class));
+                Intent intent = new Intent(CollectorDashboard.this, DustbinListActivity.class);
+                intent.putExtra("mobileNo", collectorPhoneNumber); // Replace "key" with your key and "value" with the actual data
+                startActivity(intent);
 
             }
         });
